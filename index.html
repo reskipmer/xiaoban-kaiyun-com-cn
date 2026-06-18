@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云 · 再访指南</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fde7d3 0%, #fcd5b0 50%, #f8c49a 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.2rem;
+    }
+    .page-card {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(2px);
+      border-radius: 48px 24px 48px 24px;
+      box-shadow: 0 20px 40px -12px rgba(160, 80, 30, 0.25), 0 8px 20px rgba(0,0,0,0.04);
+      padding: 2.8rem 2.4rem;
+      transition: all 0.2s ease;
+    }
+    @media (max-width: 540px) {
+      .page-card { padding: 2rem 1.4rem; border-radius: 32px 16px 32px 16px; }
+    }
+
+    /* hero 区域 */
+    .hero {
+      margin-bottom: 2.8rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(210, 130, 70, 0.2);
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #5d2e19;
+      line-height: 1.2;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #b4643a, #8a4b2a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      margin-top: 0.9rem;
+      font-size: 1.05rem;
+      color: #4f3322;
+      max-width: 70%;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { max-width: 100%; font-size: 0.98rem; }
+    }
+
+    /* 卡片栅格 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+    @media (max-width: 640px) {
+      .grid-2col { grid-template-columns: 1fr; gap: 1.2rem; }
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 4px 16px rgba(160, 70, 20, 0.08);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      border: 1px solid rgba(210, 140, 80, 0.12);
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(170, 90, 30, 0.10);
+    }
+    .info-card .emoji-deco {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .info-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #3f2517;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.01em;
+    }
+    .info-card p {
+      color: #543b2b;
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+    .info-card p + p {
+      margin-top: 0.75rem;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.8rem;
+      margin: 0.9rem 0 0.2rem;
+    }
+    .tag {
+      background: #f1dfd0;
+      color: #4c2f1c;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.01em;
+    }
+
+    /* 链接段落 */
+    .link-paragraph {
+      background: rgba(245, 215, 185, 0.25);
+      border-radius: 40px;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 1.4rem;
+      text-align: center;
+      border: 1px solid rgba(200, 130, 60, 0.15);
+    }
+    .link-paragraph p {
+      font-size: 1.06rem;
+      color: #3e2519;
+      line-height: 1.7;
+    }
+    .inline-link {
+      color: #934f28;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.1rem 0.4rem;
+      border-radius: 40px;
+      background: rgba(255, 215, 180, 0.35);
+      transition: background 0.15s, color 0.1s;
+      white-space: nowrap;
+    }
+    .inline-link:hover {
+      background: #d6966a;
+      color: #fef1e6;
+    }
+
+    /* FAQ 摘要 */
+    .faq-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      margin-top: 2.2rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(180, 100, 45, 0.15);
+    }
+    .faq-item {
+      flex: 1 1 200px;
+    }
+    .faq-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #4d2d1b;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #5a3a28;
+      line-height: 1.5;
+      margin-top: 0.15rem;
+    }
+
+    .footnote {
+      margin-top: 1.6rem;
+      font-size: 0.82rem;
+      color: #7b5b44;
+      text-align: right;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid rgba(170, 100, 50, 0.15);
+      margin: 1.8rem 0 0.8rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-card">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>再次打开 <span>开云</span> · 故事未停</h1>
+    <p>收藏、回访、持续关注 —— 每一次重新遇见，都有新的轮廓。</p>
+  </div>
+
+  <!-- 两列信息卡片 -->
+  <div class="grid-2col">
+
+    <!-- 主视觉 / 用途卡片 -->
+    <div class="info-card">
+      <div class="emoji-deco">📌</div>
+      <h3>为什么值得再次访问</h3>
+      <p>信息更新、内容迭代，是站点保持活力的常态。<strong>开云</strong> 并非一成不变。页面结构、呈现逻辑、选材角度都会随着时间微调。若你隔一段时间重新打开，往往会发现之前忽略的细节，或全新的表达方式。</p>
+      <p>收藏夹里的链接，值得定期回访 —— 尤其是那些用心维护的站点。</p>
+      <div class="tag-list">
+        <span class="tag">持续迭代</span>
+        <span class="tag">信息重组</span>
+        <span class="tag">设计微调</span>
+      </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="info-card">
+      <div class="emoji-deco">👥</div>
+      <h3>适合哪些人持续关注</h3>
+      <p>对内容质感有要求的浏览者、喜欢在固定站点获取稳定输出的用户、以及希望少而精地维护阅读列表的人。不追求海量更新，更看重每一次改版或内容调整带来的体验提升。</p>
+      <p>也适合那些习惯「先收藏、后细读」的朋友 —— 把 <strong>开云</strong> 放入书签，等一个从容的时段再回来。</p>
+      <div class="tag-list">
+        <span class="tag">内容型用户</span>
+        <span class="tag">收藏族</span>
+        <span class="tag">审美驱动</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 自然链接段落：从再次访问、收藏角度展开 -->
+  <div class="link-paragraph">
+    <p>
+      若你曾在某个时刻访问过 <a href="https://xiaoban-kaiyun.com.cn" class="inline-link">开云</a>，
+      现在不妨再查看一次。书签、标签页、笔记里记录的链接，常常被忽略，
+      但许多值得重读的页面，只有再次打开才能发现它的新层次。
+      将 <strong>开云</strong> 保留在你的常用收藏中，意味着你给未来的自己留了一个入口 ——
+      不必刻意记忆，只需偶尔回访。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-meta">
+    <div class="faq-item">
+      <h4><span>🔍</span> 什么时候更新？</h4>
+      <p>没有固定周期，内容调整往往伴随结构或视觉优化。关注即收获惊喜。</p>
+    </div>
+    <div class="faq-item">
+      <h4><span>📁</span> 怎样有效收藏？</h4>
+      <p>直接添加书签，或记下站点名「开云」。建议给书签加一个简短备注，方便日后识别。</p>
+    </div>
+    <div class="faq-item">
+      <h4><span>🔄</span> 内容会变很多吗？</h4>
+      <p>核心调性保持稳定，但段落、案例、表达方式会迭代，保持适度的新鲜感。</p>
+    </div>
+  </div>
+
+  <!-- 极简分隔 + 再次点题 -->
+  <hr>
+  <div class="footnote">
+    <span>— 收藏即关注 · 回访即对话 —</span>
+  </div>
+
+</div>
+</body>
+</html>
